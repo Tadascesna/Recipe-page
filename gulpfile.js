@@ -5,7 +5,12 @@ const uglifyCss = require('gulp-clean-css');
 const concat = require('gulp-concat');
 const fileinclude = require ('gulp-file-include')
 
-
+gulp.task('imageMin', done => {
+    gulp.src('src/assets/*')
+    .pipe(imagemin())
+    .pipe(gulp.dest('dist/assets'));
+    done();
+})
 
 gulp.task('fileinclude', done => {
     gulp.src('src/views/index.html')
@@ -17,25 +22,14 @@ gulp.task('fileinclude', done => {
         done();
 } )
 
-
-
-
-gulp.task('imageMin', done => {
-    gulp.src('src/assets/*')
-    .pipe(imagemin())
-    .pipe(gulp.dest('dist/assets'));
-    done();
-})
-
 gulp.task('sass', done => {
-    gulp.src('src/sass/**/*.scss')
+    gulp.src('src/styles/styles.scss')
     .pipe(scss().on('error', scss.logError))
     .pipe(uglifyCss())
     .pipe(concat('style.min.css'))
     .pipe(gulp.dest('dist/css'));
     done();
 })
-
 
 gulp.task('default',gulp.parallel(['fileinclude', 'sass']));
 
