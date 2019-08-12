@@ -1,0 +1,29 @@
+{
+  "name": "recipe-page",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tadascesna/Recipe-page.git"
+  },
+  "author": "Tadas Cesna",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tadascesna/Recipe-page/issues"
+  },
+  "homepage": "https://github.com/Tadascesna/Recipe-page#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-clean-css": "^4.2.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-imagemin": "^6.0.0",
+    "gulp-sass": "^4.0.2"
+  },
+  "dependencies": {
+    "gulp-file-include": "^2.1.0"
+  }
+}
