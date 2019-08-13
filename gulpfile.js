@@ -13,7 +13,7 @@ const sourcemaps = require('gulp-sourcemaps')
 
 const scssSrc = 'src/sass/';
 const htmlSrc = 'src/views/';
-const imgSrc = 'src/assets';
+const imgSrc = 'src/assets/*';
 
 const imgDest = 'dist/assets';
 const scssDest = 'dist/css/';
