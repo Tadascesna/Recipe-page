@@ -1,42 +1,82 @@
 const gulp = require('gulp');
 const imagemin = require('gulp-imagemin');
-const scss = require('gulp-sass');
-const uglifyCss = require('gulp-clean-css');
+const sass = require('gulp-sass');
+const cleanCSS = require('gulp-clean-css');
 const concat = require('gulp-concat');
-const fileinclude = require ('gulp-file-include')
+const fileinclude = require ('gulp-file-include');
+const autoprefixer = require ('gulp-autoprefixer');
+const browserSync = require('browser-sync').create(); 
+const sourcemaps = require('gulp-sourcemaps')
 
-gulp.task('imageMin', done => {
-    gulp.src('src/assets/*')
+
+// ROUTES
+
+const scssSrc = 'src/sass/';
+const htmlSrc = 'src/views/';
+const imgSrc = 'src/assets';
+
+const imgDest = 'dist/assets';
+const scssDest = 'dist/css/';
+const htmlDest = 'dist/';
+
+
+const styleWatchFiles = scssSrc + '**/*.scss';
+const htmlWatchFiles = htmlSrc + '**/*.html';
+
+
+
+function fileInclude() {
+    return gulp.src(['index.html'])
+    .pipe(fileinclude({
+        prefix: '@@',
+        basepath: '@file'
+    }))
+    .pipe(gulp.dest(htmlDest))
+
+}
+
+function css() {
+    return gulp.src(scssSrc + 'style.scss')
+    .pipe(sourcemaps.init({loadMaps: true}))
+    .pipe(sass().on('error',sass.logError))
+    .pipe(autoprefixer('last 2 versions'))
+    .pipe(cleanCSS())
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest(scssDest))
+}
+
+function imgmin() {
+    return gulp.src(imgSrc)
     .pipe(imagemin())
-    .pipe(gulp.dest('dist/assets'));
-    done();
-})
+    .pipe(gulp.dest(imgDest))
+}
 
-gulp.task('fileinclude', done => {
-    gulp.src('src/views/index.html')
-        .pipe(fileinclude({
-            prefix: '@@',
-            basepath: '@file'
-        }))
-        .pipe(gulp.dest('dist/'));
-        done();
-} )
+function watch() {
+    browserSync.init({
+        server: {
+            baseDir: "dist/"
+        }
+    });
 
-gulp.task('sass', done => {
-    gulp.src('src/styles/styles.scss')
-    .pipe(scss().on('error', scss.logError))
-    .pipe(uglifyCss())
-    .pipe(concat('style.min.css'))
-    .pipe(gulp.dest('dist/css'));
-    done();
-})
+    gulp.watch(styleWatchFiles, css).on('change', browserSync.reload);
+    gulp.watch(htmlWatchFiles, fileInclude).on('change', browserSync.reload)
+}
 
-gulp.task('default',gulp.parallel(['fileinclude', 'sass']));
 
-gulp.task('watch', done => {
-    gulp.watch('src/sass/*', ['sass']);
-    done ()
-} )
+
+exports.css = css;
+exports.imgmin = imgmin;
+exports.watch = watch;
+exports.fileInclude = fileInclude;
+
+const build = gulp.parallel(watch);
+gulp.task('default', build)
+
+
+
+
+
+
 
 
 
