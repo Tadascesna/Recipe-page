@@ -1,0 +1,12 @@
+.container {
+    box-sizing: border-box;
+    padding: 0;
+    max-width: 1440px;
+    margin: auto;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(5, [col-start] 1fr [col-end]);
+    grid-template-rows: repeat(5, minmax(100px, 150px));
+}

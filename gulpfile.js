@@ -59,7 +59,7 @@ function watch() {
     });
 
     gulp.watch(styleWatchFiles, css).on('change', browserSync.reload);
-    gulp.watch(htmlWatchFiles, fileInclude).on('change', browserSync.reload)
+    gulp.watch(htmlWatchFiles, fileInclude).on('change', browserSync.reload);
 }
 
 

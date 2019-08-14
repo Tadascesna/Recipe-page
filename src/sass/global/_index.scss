@@ -1,9 +1,2 @@
-$color-red: #ccaaff;
-
-body {
-    background-color: $color-red;
-}
-
-h1 {
-    color: gray;
-}
+@import 'global';
+@import 'layout';

@@ -1,0 +1,7 @@
+@mixin transition($duration: .2s, $property: all) {
+    transition: ease $property $duration;
+}
+
+@mixin respond-to($media) {
+    @media only screen and (min-width: $media) { @content; }
+}
