@@ -5,7 +5,8 @@ const cleanCSS = require('gulp-clean-css');
 const fileinclude = require ('gulp-file-include');
 const autoprefixer = require ('gulp-autoprefixer');
 const browserSync = require('browser-sync').create(); 
-const sourcemaps = require('gulp-sourcemaps')
+const sourcemaps = require('gulp-sourcemaps');
+// const sassLinter = require('gulp-sass-lint');
 
 
 // ROUTES
@@ -31,8 +32,14 @@ function fileInclude() {
         basepath: '@file'
     }))
     .pipe(gulp.dest(htmlDest))
-
 }
+
+// function sassLint() {
+//     return gulp.src(scssSrc + '/**/*.scss')
+//     .pipe(sassLinter())
+//     .pipe(sassLinter.format())
+//     .pipe(sassLinter.failOnError())
+// }
 
 function css() {
     return gulp.src(scssSrc + 'style.scss')
@@ -57,13 +64,14 @@ function watch() {
         }
     });
 
+    // gulp.watch(styleWatchFiles, sassLint);
     gulp.watch(styleWatchFiles, css).on('change', browserSync.reload);
     gulp.watch(htmlWatchFiles, fileInclude).on('change', browserSync.reload);
     gulp.watch(imgSrc, imgmin).on('change', browserSync.reload);
 }
 
 
-
+// exports.sassLint = sassLint;
 exports.css = css;
 exports.imgmin = imgmin;
 exports.watch = watch;

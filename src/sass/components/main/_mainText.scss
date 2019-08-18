@@ -20,7 +20,7 @@
         margin-bottom: 20px;
         font: $font-mobile-body;
         @include respond-to ($breakpoint-mobile) {
-            font: $font-desktop-body;;
+            font: $font-mobile-body;;
         }
     }
     &__paragraph2 {
@@ -28,7 +28,7 @@
         font: $font-mobile-body;
 
         @include respond-to ($breakpoint-mobile) {
-            font: $font-desktop-body;;
+            font: $font-mobile-body;;
         }
     }
 
