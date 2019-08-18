@@ -1,8 +1,8 @@
 .container {
     box-sizing: border-box;
-    padding: 0;
-    max-width: $container-width;
     margin: auto;
+    max-width: $container-width;
+    padding: 0;
 }
 
 @media screen and (max-width: $breakpoint-mobile - 1px) {

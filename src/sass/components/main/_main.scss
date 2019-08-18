@@ -1,0 +1,88 @@
+.main--grid {
+    @include respond-to ($breakpoint-mobile) {
+        grid-auto-rows: (50px, auto);
+        grid-gap: 50px;
+        grid-template-columns: repeat(14, 1fr);
+    }
+
+    display: grid;
+    grid-auto-rows: minmax(50px, auto);
+    grid-template-columns: $mobile-padding [content-start] 1fr [content-end] $mobile-padding;
+}
+
+.main {
+    @include respond-to ($breakpoint-mobile) {
+        grid-column: 7 / span 5;
+        grid-template-columns: repeat(14, 1fr);
+        margin: 0;
+    }
+
+    grid-column: content;
+    margin: 20px 0px;
+
+    &__paragraph1 {
+        @include respond-to ($breakpoint-mobile) {
+            font: $font-mobile-body;
+        }
+
+        font: $font-mobile-body;
+        margin: 0;
+        margin-bottom: 20px;
+    }
+
+    &__paragraph2 {
+        @include respond-to ($breakpoint-mobile) {
+            font: $font-mobile-body;
+        }
+
+        font: $font-mobile-body;
+        margin: 0;
+    }
+}
+
+.image__left--container {
+    @include respond-to ($breakpoint-mobile) {
+    grid-column: 2 / span 5;
+    grid-row: span 4;
+    }
+
+    grid-column: content;
+    grid-row: span 7;
+    height: 100%;
+    width: 100%;
+}
+
+.image__left {
+    @include transition;
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+
+    &:hover {
+        @include hovering;
+    }
+}
+
+.image__right--container {
+    @include respond-to ($breakpoint-mobile) {
+        grid-column: 7 / span 5;
+        grid-row: span 4;
+    }
+
+    grid-column: content;
+    grid-row: span 7;
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+}
+
+.image__right {
+    @include transition;
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+
+    &:hover {
+        @include hovering;
+    }
+}

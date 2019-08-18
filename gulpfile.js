@@ -6,7 +6,7 @@ const fileinclude = require ('gulp-file-include');
 const autoprefixer = require ('gulp-autoprefixer');
 const browserSync = require('browser-sync').create(); 
 const sourcemaps = require('gulp-sourcemaps');
-// const sassLinter = require('gulp-sass-lint');
+const scssLinter = require('gulp-sass-lint');
 
 
 // ROUTES
@@ -34,18 +34,20 @@ function fileInclude() {
     .pipe(gulp.dest(htmlDest))
 }
 
-// function sassLint() {
-//     return gulp.src(scssSrc + '/**/*.scss')
-//     .pipe(sassLinter({
-//         rules: {
-//             'indentation': 'tab'
-//         }
-//     }))
-//     .pipe(sassLinter.format())
-//     .pipe(sassLinter.failOnError())
-// }
+function scssLint() {
+    return gulp.src(scssSrc + '/**/*.scss')
+    .pipe(scssLinter({
+        rules: {
+            'indentation': 0,
+            'class-name-format': 0,
+            'zero-unit': 0,
+        }
+    }))
+    .pipe(scssLinter.format())
+    .pipe(scssLinter.failOnError())
+}
 
-function css() {
+function scss() {
     return gulp.src(scssSrc + 'style.scss')
     .pipe(sourcemaps.init({loadMaps: true}))
     .pipe(sass().on('error',sass.logError))
@@ -68,15 +70,15 @@ function watch() {
         }
     });
 
-    // gulp.watch(styleWatchFiles, sassLint);
-    gulp.watch(styleWatchFiles, css).on('change', browserSync.reload);
+    gulp.watch(styleWatchFiles, scssLint);
+    gulp.watch(styleWatchFiles, scss).on('change', browserSync.reload)
     gulp.watch(htmlWatchFiles, fileInclude).on('change', browserSync.reload);
     gulp.watch(imgSrc, imgmin).on('change', browserSync.reload);
 }
 
 
-exports.sassLint = sassLint;
-exports.css = css;
+exports.scssLint = scssLint;
+exports.scss = scss;
 exports.imgmin = imgmin;
 exports.watch = watch;
 exports.fileInclude = fileInclude;

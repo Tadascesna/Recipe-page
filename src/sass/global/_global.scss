@@ -9,12 +9,14 @@ h1 {
     font: $font-mobile-h1;
     margin: 0;
 }
+
 h2 {
-    font: $font-mobile-h1;
+    font: $font-mobile-h2;
     margin: 0;
 }
+
 h4 {
-    font: $font-mobile-h1;
+    font: $font-mobile-h4;
     margin: 0;
 }
 
@@ -27,12 +29,14 @@ h4 {
         font: $font-desktop-h1;
         margin: 0;
     }
+
     h2 {
-        font: $font-desktop-h1;
+        font: $font-desktop-h2;
         margin: 0;
     }
+
     h4 {
-        font: $font-desktop-h1;
+        font: $font-desktop-h4;
         margin: 0;
     }
 }

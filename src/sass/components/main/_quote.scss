@@ -1,61 +1,73 @@
-.quote-grid {
+.quote {
+    &--grid {
+    @include respond-to($breakpoint-mobile) {
+        grid-auto-rows: minmax(50px, auto);
+        grid-template-columns: repeat(14, 1fr);
+    }
+
     display: grid;
-    grid-auto-rows: minmax(40px, auto);
-    grid-template-columns: 16px [content-start] 1fr [content-end] 16px;
+    grid-auto-rows: minmax(50px, auto);
+    grid-template-columns: $mobile-padding [content-start] 1fr [content-end] $mobile-padding;
     justify-content: end;
     margin-bottom: 40px;
     margin-top: 80px;
-    @include respond-to($breakpoint-mobile) {
-        grid-auto-rows: minmax(80px, auto);
-        grid-template-columns: repeat(14, 1fr);
     }
-}
 
+    &__text {
+        @include respond-to($breakpoint-mobile) {
+            font: $font-tablet-quote;
+            grid-column: 2 / span 10;
+        }
 
-.quote-text {
+        @include respond-to($breakpoint-desktop) {
+            font: $font-desktop-quote;
+        }
 
-  font: $font-quote;
-  grid-column: content;
+        font: $font-new-quote;
+        grid-column: content;
+    }
 
-  @include respond-to($breakpoint-mobile) {
-    font: $font-desktop-quote;
-    grid-column: 2 / span 10;
-  }
-}
+    &__logo--container {
+        @include respond-to($breakpoint-mobile) {
+            grid-column: 10 / span 2;
+            height: 40px;
+            width: 100%;
+        }
 
-.buonGiorno {
-  background-image: url("../../../assets/buonGiorno.png");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
-  grid-column: 2 / -1;
-  grid-column: content;
-  height: 100%;
-  justify-self: end;
-  width: 40%;
-  min-width: 91px;
+        grid-column: content;
+        height: 35px;
+        justify-self: end;
+    }
 
-  @include respond-to($breakpoint-mobile) {
-    grid-column: 10 / span 2;
-    width: 100%;
-  }
-}
+    &__logo {
+        height: 100%;
+        object-fit: contain;
+        width: 100%;
+    }
 
-.quoteSignature {
-  background-image: url("../../../assets/quoteSignature.png");
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
-  grid-column: content;
-  height: 100%;
-  width: 80%;
-  min-width: 200px;
-  justify-self: end;
-  @include respond-to($breakpoint-mobile) {
-    grid-column: 7 / span 4;
-    justify-self: start;
-    align-self: start;
-    height: 100%;
-    width: 100%;
-  }
+    &__signature--container {
+        @include respond-to($breakpoint-mobile) {
+            align-self: start;
+            grid-column: 6 / span 5;
+            height: 100%;
+            justify-self: start;
+            width: 100%;
+        }
+
+        @include respond-to($breakpoint-tablet) {
+            grid-column: 7 / span 4;
+        }
+
+        grid-column: content;
+        height: 100%;
+        justify-self: end;
+        min-width: 200px;
+        width: 60%;
+    }
+
+    &__signature {
+        height: 100%;
+        object-fit: contain;
+        width: 100%;
+    }
 }

@@ -1,22 +1,21 @@
 .footer-grid {
-    display: grid;
-    grid-template-columns: 16px [content-start] 1fr [content-end] 16px;
-    grid-auto-rows: minmax(50px, auto);
-    margin-top: 60px;
-
-
     @include respond-to ($breakpoint-mobile) {
+    grid-auto-rows: (50px, auto);
+    grid-gap: 50px;
     grid-template-columns: repeat(14, 1fr);
-    grid-auto-rows: (50px, auto); 
-    grid-gap: 50px;   
     }
+
+    display: grid;
+    grid-auto-rows: minmax(50px, auto);
+    grid-template-columns: $mobile-padding [content-start] 1fr [content-end] $mobile-padding;
+    margin-top: 60px;
 }
 
 .onion__container {
-    grid-column: content;
-    width: 100%;
-
     @include respond-to ($breakpoint-mobile) {
         grid-column: 2 / span 2;
     }
+
+    grid-column: content;
+    width: 100%;
 }

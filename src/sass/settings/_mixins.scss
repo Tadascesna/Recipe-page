@@ -5,3 +5,8 @@
 @mixin respond-to($media) {
     @media only screen and (min-width: $media) { @content; }
 }
+
+@mixin hovering($proprety: .9, $number: -2px) {
+    opacity: $proprety;
+    transform: translateY($number);
+}

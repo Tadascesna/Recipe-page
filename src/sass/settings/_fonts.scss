@@ -1,4 +1,4 @@
-// Tablet, Desktop
+//Desktop
 $font-desktop-body: normal 14px 'Playfair Display', sans-serif;
 $font-desktop-button: normal 14px 'Playfair Display', sans-serif;
 $font-desktop-h1: bold 65px 'Playfair Display', sans-serif;
@@ -7,6 +7,11 @@ $font-desktop-h4: bold 14px 'Playfair Display', sans-serif;
 $font-desktop-quote: normal 50px 'Playfair Display', sans-serif;
 $font-desktop-subtitle: normal 14px 'Playfair Display', sans-serif;
 
+// Tablet
+// Due to big fonts and a huge breakpoint gap between dekstop and mobile, new transitionary fonts were introduced
+
+$font-tablet-h1: bold 50px 'Playfair Display', sans-serif;
+$font-tablet-quote: normal 40px 'Playfair Display', sans-serif;
 
 // Mobile
 $font-mobile-body: normal 14px 'Montserrat', sans-serif;
@@ -17,8 +22,8 @@ $font-mobile-h4: bold 14px 'Montserrat', sans-serif;
 $font-mobile-quote: normal 24px 'Montserrat', sans-serif;
 $font-mobile-subtitle: normal 14px 'Montserrat', sans-serif;
 
-// Discrepancies in the project
+// There were fonts on Mobile screen that had Desktop fonts, or fonts not listed in the project font list
+// Discrepancies in the project 
 
-$font-quote: normal 24px 'Playfair Display', sans-serif;
-
-
+$font-new-quote: normal 24px 'Playfair Display', sans-serif;
+$font-new-mobile-h1: bold 35px 'Playfair Display', sans-serif;
