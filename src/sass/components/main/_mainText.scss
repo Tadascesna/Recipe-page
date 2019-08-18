@@ -1,0 +1,77 @@
+.mainText-grid {
+    display: grid;
+    grid-template-columns: 16px [content-start] 1fr [content-end] 16px;
+    grid-auto-rows: minmax(50px, auto);
+
+
+    @include respond-to ($breakpoint-mobile) {
+    grid-template-columns: repeat(14, 1fr);
+    grid-auto-rows: (50px, auto); 
+    grid-gap: 50px;   
+    }
+}
+
+.mainText {
+    grid-column: content;
+    margin: 20px 0px;
+    
+    &__paragraph1 {
+        margin: 0;
+        margin-bottom: 20px;
+        font: $font-mobile-body;
+        @include respond-to ($breakpoint-mobile) {
+            font: $font-desktop-body;;
+        }
+    }
+    &__paragraph2 {
+        margin: 0;
+        font: $font-mobile-body;
+
+        @include respond-to ($breakpoint-mobile) {
+            font: $font-desktop-body;;
+        }
+    }
+
+
+    @include respond-to ($breakpoint-mobile) {
+    grid-template-columns: repeat(14, 1fr);    
+    grid-column: 7 / span 5;
+    margin: 0;
+    }
+}
+
+.doubleSpaghetti {
+    background-image: url('../../../assets/doubleSpaghetti.jpg');
+    background-position:center;
+    background-repeat:no-repeat;
+    background-size:cover;
+    height: 100%;
+    width: 100%;
+    grid-row: span 7;
+
+    grid-column: content;
+
+    @include respond-to ($breakpoint-mobile) {
+    grid-column: 2 / span 5;
+    grid-row: span 4;
+    }
+}
+
+.dinnerTable {
+    background-image: url('../../../assets/dinnerTable.jpg');
+    background-position:center;
+    background-repeat:no-repeat;
+    background-size:cover;
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    grid-row: span 7;
+
+    grid-column: content;
+
+    @include respond-to ($breakpoint-mobile) {  
+    grid-column: 7 / span 5;
+    grid-row: span 4;
+    }
+}
+

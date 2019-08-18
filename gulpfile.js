@@ -2,7 +2,6 @@ const gulp = require('gulp');
 const imagemin = require('gulp-imagemin');
 const sass = require('gulp-sass');
 const cleanCSS = require('gulp-clean-css');
-const concat = require('gulp-concat');
 const fileinclude = require ('gulp-file-include');
 const autoprefixer = require ('gulp-autoprefixer');
 const browserSync = require('browser-sync').create(); 
@@ -60,6 +59,7 @@ function watch() {
 
     gulp.watch(styleWatchFiles, css).on('change', browserSync.reload);
     gulp.watch(htmlWatchFiles, fileInclude).on('change', browserSync.reload);
+    gulp.watch(imgSrc, imgmin).on('change', browserSync.reload);
 }
 
 

@@ -1,0 +1,203 @@
+.grid__top {
+    display: grid;
+    grid-template-columns: 16px [content-start] 1fr [content-end] 16px;
+    grid-auto-rows: minmax(80px, auto);
+    background-color: $color-secondary-light;
+
+    @include respond-to ($breakpoint-mobile) {
+        margin-bottom: 200px;
+        grid-template-columns: repeat(14, 1fr);
+        grid-template-rows: repeat(19, 50px);
+    
+        grid-template-areas: 
+            "w  .  .  .  bg bg bg bg bg bg eg eg eg eg"
+            "w  .  .  .  bg bg bg bg bg bg eg eg eg eg"
+            "sp sp sp sp co co co co co co eg eg eg eg"
+            "sp sp sp sp co co co co co co eg eg eg eg"
+            "sp sp sp sp co co co co co co eg eg eg eg"
+            "sp sp sp sp co co co co co co eg eg eg eg"
+            "sp sp sp sp co co co co co co  .  .  .  ."
+            "sp sp sp sp co co co co co co  .  .  .  ."
+            "sp sp sp sp co co co co co co  .  .  .  ."
+            "sp sp sp sp co co co co co co  .  .  .  ."
+            "sp sp sp sp .  .  .  .  .  .   .  .  .  ."
+            "sp sp sp sp .  .  .  .  .  .   .  .  .  ."
+            "sp sp sp sp .  .  .  .  .  sh sh sh sh  ."
+            "w2 .  .  .  .  .  .  .  .  sh sh sh sh  ."
+            "w2 .  .  .  .  .  .  .  .  sh sh sh sh  ."
+            "w2 w5 w4 w4 w3 w3 w3 w3 w3 sh sh sh sh w6"
+            "w2 w5 pe pe w3 w3 w3 w3 w3 sh sh sh sh w6"
+            "w2 w5 pe pe w3 w3 w3 w3 w3 sh sh sh sh w6"
+            "w2 w5 pe pe w3 w3 w3 w3 w3 w7 w7 w7 w7 w6";
+    }
+}
+
+.image__buonGiorno {
+    background-image: url('../../assets/buonGiorno.png');
+    background-position: center;
+    background-size:contain;
+    background-repeat:no-repeat;
+    grid-column: content;
+    height: 30px;
+    width: 100%;
+    justify-self: center;
+    align-self: center;
+
+    @include respond-to ($breakpoint-mobile) {
+        height: 40px;
+        grid-area: bg;
+        justify-self: center;
+        align-self: center;
+    }
+}
+
+.image__spaghetti {
+    background-image: url('../../assets/spaghetti.jpg');
+    background-position:center;
+    background-repeat:no-repeat;
+    background-size:cover;
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    grid-column: content;
+    grid-row: span 8;
+    margin-bottom: 28px;
+
+    @include respond-to ($breakpoint-mobile) {
+        grid-area: sp;
+    }
+}
+
+.image__egg {
+    background-image: url('../../assets/egg.jpg');
+    background-position:center;
+    background-repeat:no-repeat;
+    background-size:cover;
+    height: auto;
+    grid-column: content;
+    grid-row: span 4;
+
+    width: 100%;
+
+    @include respond-to ($breakpoint-mobile) {
+        grid-area: eg;
+    }
+}
+
+.image__shrimp {
+
+    background-position: center;
+    background-repeat:no-repeat;
+    object-fit: cover;
+    display: block;
+    height: 100%;
+    width: 100%;
+    grid-column: content;
+    grid-row: span 4;
+    margin-top: 24px;
+    box-sizing: border-box;
+
+    @include respond-to ($breakpoint-mobile) {
+        grid-area: sh;
+        background-position:center;
+        margin-top: 0px;
+    }
+}
+
+.pepper__container {
+
+    grid-column: content;
+    width: 100%;
+    margin-top: 24px;
+
+    @include respond-to ($breakpoint-mobile) {
+        grid-area: pe;
+        background-color: $color-background;
+        margin-top: 0px;
+    }
+}
+
+.text__column {
+    grid-column: content;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-row: span 4;
+
+
+    @include respond-to ($breakpoint-mobile) {
+        grid-area: co;
+        grid-column: default;
+    }
+
+    &__header {
+        text-align: center;
+        grid-column: 1 / -1;
+        align-self: end;
+        text-transform: capitalize;
+    }
+
+    &__signature {
+        display: inline;
+        justify-self: center;
+        align-self: start;
+        @include respond-to ($breakpoint-mobile) {
+            justify-self: end;
+            align-self: start;
+            grid-column: 1 / -1
+        }
+        grid-column: 1 / -1;
+    }
+
+    &__button {
+        cursor: pointer;
+        background-color: $color-secondary;
+        font: $font-desktop-button;
+        text-transform: uppercase;
+        padding: 20px 50px;
+        border: none;
+        align-self: start;
+        justify-self: center;
+        grid-column: 1 / -1;
+        @include transition;
+
+
+        &:focus {
+            outline: none;
+        }
+
+        &:hover {
+            opacity: 0.7;
+        }
+    }
+}
+
+
+.white_background {
+    background-color: $color-background;
+    grid-area: w;
+}
+.white_background2 {
+    background-color: $color-background;
+    grid-area: w2;
+}
+
+.white_background3 {
+    background-color: $color-background;
+    grid-area: w3;
+}
+.white_background4 {
+    background-color: $color-background;
+    grid-area: w4;
+}
+.white_background5 {
+    background-color: $color-background;
+    grid-area: w5;
+}
+.white_background6 {
+    background-color: $color-background;
+    grid-area: w6;
+}
+.white_background7 {
+    background-color: $color-background;
+    grid-area: w7;
+}
