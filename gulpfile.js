@@ -36,7 +36,11 @@ function fileInclude() {
 
 // function sassLint() {
 //     return gulp.src(scssSrc + '/**/*.scss')
-//     .pipe(sassLinter())
+//     .pipe(sassLinter({
+//         rules: {
+//             'indentation': 'tab'
+//         }
+//     }))
 //     .pipe(sassLinter.format())
 //     .pipe(sassLinter.failOnError())
 // }
@@ -71,7 +75,7 @@ function watch() {
 }
 
 
-// exports.sassLint = sassLint;
+exports.sassLint = sassLint;
 exports.css = css;
 exports.imgmin = imgmin;
 exports.watch = watch;
