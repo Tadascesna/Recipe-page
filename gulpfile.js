@@ -8,7 +8,6 @@ const browserSync = require('browser-sync').create();
 const sourcemaps = require('gulp-sourcemaps');
 const scssLinter = require('gulp-sass-lint');
 
-
 // ROUTES
 
 const scssSrc = 'src/sass/';
@@ -19,11 +18,11 @@ const imgDest = 'dist/assets';
 const scssDest = 'dist/css/';
 const htmlDest = 'dist/';
 
-
 const styleWatchFiles = scssSrc + '**/*.scss';
 const htmlWatchFiles = htmlSrc + '**/*.html';
 
 
+// Functions
 
 function fileInclude() {
     return gulp.src(['index.html'])
@@ -76,14 +75,13 @@ function watch() {
     gulp.watch(imgSrc, imgmin).on('change', browserSync.reload);
 }
 
-
 exports.scssLint = scssLint;
 exports.scss = scss;
 exports.imgmin = imgmin;
 exports.watch = watch;
 exports.fileInclude = fileInclude;
 
-const build = gulp.parallel(watch);
+const build = gulp.series(imgmin, watch);
 gulp.task('default', build)
 
 
